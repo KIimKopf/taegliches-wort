@@ -96,15 +96,15 @@ function showToday() {
 }
 
 // ================================
-// DEV TOGGLE (nur lokal)
+// DEV PREMIUM TOGGLE (Taste P)
 // ================================
-if (location.hostname === "localhost" || location.hostname.includes("github.io")) {
-  document.addEventListener("keydown", (e) => {
-    if (e.key.toLowerCase() === "p") {
-      const current = localStorage.getItem("premium") === "true";
-      localStorage.setItem("premium", (!current).toString());
-      console.log("🔁 Premium:", !current);
-      location.reload();
-    }
-  });
-}
+window.addEventListener("keydown", (e) => {
+  if (e.key === "p" || e.key === "P") {
+    const current = localStorage.getItem("premium") === "true";
+    localStorage.setItem("premium", (!current).toString());
+    console.log("🔁 Premium jetzt:", !current);
+    location.reload();
+  }
+});
+
+
