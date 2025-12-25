@@ -5,16 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Tägliches Wort</title>
 
-  <!-- Styles -->
   <link rel="stylesheet" href="./style.css" />
-
-  <!-- PWA -->
   <link rel="manifest" href="./manifest.json" />
 </head>
 
 <body>
 
-  <!-- Logo -->
   <img src="./assets/Blatt.png" class="logo" alt="Blatt" />
 
   <h1>Tägliches Wort</h1>
@@ -22,30 +18,38 @@
   <p id="date" class="date"></p>
 
   <div class="card">
+
     <h2 id="title"></h2>
     <p id="text"></p>
 
-    <!-- Vorschau (Free) -->
-    <div class="blurred">
-      <p class="verse">Ein Gedanke, der tiefer geht…</p>
-      <p class="blessing">Ein Segen, der bleibt…</p>
+    <!-- FREE -->
+    <div id="freeBlock">
+      <div class="blurred">
+        <p class="verse">Ein Gedanke, der tiefer geht…</p>
+        <p class="blessing">Ein Segen, der bleibt…</p>
+      </div>
+
+      <div class="premium-box">
+        <span>FÜR ABONNENTEN</span>
+        <p>Der heutige Gedanke entfaltet sich vollständig im Premium.</p>
+        <a class="cta" href="https://kiimkopf.gumroad.com/l/rabbb">
+          🌙 Zugang öffnen – 1 € im Monat
+        </a>
+      </div>
     </div>
 
-    <!-- Upsell -->
-    <div class="premium-box">
-      <span>FÜR ABONNENTEN</span>
-      <p>Der heutige Gedanke entfaltet sich vollständig im Premium.</p>
-      <a class="cta" href="https://kiimkopf.gumroad.com/l/rabbb">
-        🌙 Zugang öffnen – 1 € im Monat
-      </a>
+    <!-- PREMIUM -->
+    <div id="premiumBlock" style="display:none">
+      <p id="verse" class="verse"></p>
+      <p id="blessing" class="blessing"></p>
     </div>
+
   </div>
 
   <footer>
     Ein stiller Impuls. Kein Ersatz für Gespräche oder Seelsorge.
   </footer>
 
-  <!-- Script ganz am Ende -->
   <script src="./script.js"></script>
 </body>
 </html>
