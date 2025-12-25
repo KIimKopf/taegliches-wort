@@ -106,17 +106,23 @@ h1 {
 
 /* PREMIUM BOX – RUHIG & WERTIG */
 .premium-box {
-  margin-top: 22px;
-  padding: 22px 20px;
+  margin-top: 1.6rem;
+  padding: 1.6rem;
   border-radius: 18px;
-  background: linear-gradient(
-    180deg,
-    rgba(120, 150, 255, 0.12),
-    rgba(120, 150, 255, 0.05)
+
+  background: radial-gradient(
+    circle at top,
+    rgba(120,180,255,0.18),
+    rgba(20,30,50,0.85)
   );
+
+  box-shadow:
+    0 20px 40px rgba(0,0,0,0.35),
+    inset 0 1px 0 rgba(255,255,255,0.08);
+
   text-align: center;
-  border: 1px solid rgba(160, 180, 255, 0.18);
 }
+
 
 .premium-box span {
   display: block;
@@ -163,4 +169,5 @@ footer {
   max-width: 360px;
   line-height: 1.4;
 }
+
 
