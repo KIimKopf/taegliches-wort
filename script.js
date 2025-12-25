@@ -94,3 +94,17 @@ function showToday() {
     if (premiumBlock) premiumBlock.style.display = "block";
   }
 }
+
+// ================================
+// DEV TOGGLE (nur lokal)
+// ================================
+if (location.hostname === "localhost" || location.hostname.includes("github.io")) {
+  document.addEventListener("keydown", (e) => {
+    if (e.key.toLowerCase() === "p") {
+      const current = localStorage.getItem("premium") === "true";
+      localStorage.setItem("premium", (!current).toString());
+      console.log("🔁 Premium:", !current);
+      location.reload();
+    }
+  });
+}
