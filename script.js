@@ -1,10 +1,10 @@
 // ================================
 // CONFIG
 // ================================
-const CREATOR_MODE = false; // 🔴 NUR lokal auf true setzen, NIE live
+const CREATOR_MODE = false; // 🔴 NUR lokal true, NIE live
 
 // ================================
-// ELEMENTS
+// ELEMENTS (safe grabs)
 // ================================
 const dateEl = document.getElementById("date");
 const titleEl = document.getElementById("title");
@@ -16,13 +16,15 @@ const premiumBlock = document.getElementById("premiumBlock");
 // ================================
 // DATE
 // ================================
-const today = new Date();
-dateEl.textContent = today.toLocaleDateString("de-DE", {
-  weekday: "long",
-  year: "numeric",
-  month: "long",
-  day: "numeric",
-});
+if (dateEl) {
+  const today = new Date();
+  dateEl.textContent = today.toLocaleDateString("de-DE", {
+    weekday: "long",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+}
 
 // ================================
 // PREMIUM STATUS
@@ -30,7 +32,7 @@ dateEl.textContent = today.toLocaleDateString("de-DE", {
 let isPremium =
   CREATOR_MODE || localStorage.getItem("premium") === "true";
 
-// Gumroad Return (optional)
+// Gumroad Rückkehr (?premium=true)
 const params = new URLSearchParams(window.location.search);
 if (params.get("premium") === "true") {
   localStorage.setItem("premium", "true");
@@ -39,35 +41,56 @@ if (params.get("premium") === "true") {
 }
 
 // ================================
+// PREMIUM PAGE PROTECTION
+// ================================
+if (
+  document.body.classList.contains("premium-page") &&
+  !isPremium
+) {
+  window.location.href = "./index.html";
+}
+
+// ================================
 // CONTENT
 // ================================
 let entries = [];
 
 fetch("./content.json", { cache: "no-store" })
-  .then((res) => res.json())
+  .then((res) => {
+    if (!res.ok) throw new Error("content.json not found");
+    return res.json();
+  })
   .then((data) => {
+    if (!Array.isArray(data) || data.length === 0) {
+      throw new Error("content.json empty");
+    }
     entries = data;
     showToday();
+  })
+  .catch((err) => {
+    console.error("Content load failed:", err);
   });
 
+// ================================
+// RENDER
+// ================================
 function showToday() {
+  const today = new Date();
   const index =
     Math.floor(today.getTime() / 86400000) % entries.length;
 
   const entry = entries[index];
 
-  titleEl.textContent = entry.title;
-  textEl.textContent = entry.text;
+  if (titleEl) titleEl.textContent = entry.title || "";
+  if (textEl) textEl.textContent = entry.text || "";
 
   if (isPremium) {
-    // PREMIUM
-    verseEl.textContent = entry.verse;
-    blessingEl.textContent = entry.blessing;
-    premiumBlock.style.display = "none";
+    if (verseEl) verseEl.textContent = entry.verse || "";
+    if (blessingEl) blessingEl.textContent = entry.blessing || "";
+    if (premiumBlock) premiumBlock.style.display = "none";
   } else {
-    // FREE
-    verseEl.textContent = "";
-    blessingEl.textContent = "";
-    premiumBlock.style.display = "block";
+    if (verseEl) verseEl.textContent = "";
+    if (blessingEl) blessingEl.textContent = "";
+    if (premiumBlock) premiumBlock.style.display = "block";
   }
 }
