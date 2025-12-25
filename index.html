@@ -10,7 +10,6 @@
 
   <!-- PWA -->
   <link rel="manifest" href="./manifest.json" />
-  <meta name="theme-color" content="#0e1624" />
   <meta name="theme-color" content="#0f1724" />
   <link rel="apple-touch-icon" href="./assets/icon-192.png" />
 </head>
@@ -63,6 +62,18 @@
 
   <!-- Script ganz am Ende -->
   <script src="./script.js" defer></script>
+  
+  <script>
+  // iOS-Hinweis nur einmal
+  if (
+    /iphone|ipad|ipod/i.test(navigator.userAgent) &&
+    !window.matchMedia('(display-mode: standalone)').matches
+  ) {
+    console.log("iOS: Zum Homescreen hinzufügen empfohlen");
+  }
+</script>
+
 </body>
 </html>
+
 
