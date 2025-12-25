@@ -1,55 +1,167 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
-  font-family: system-ui, sans-serif;
-  background: radial-gradient(circle at top, #1a2233, #070b12);
-  color: #e8edf5;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Inter, Helvetica, Arial, sans-serif;
+  background: radial-gradient(
+    circle at top,
+    #1b2330 0%,
+    #0d1117 70%
+  );
+  color: #e6e9ef;
   text-align: center;
+  padding: 32px 16px 48px;
 }
 
 .logo {
-  width: 40px;
-  margin: 40px auto 10px;
+  width: 42px;
+  opacity: 0.9;
+  margin-bottom: 8px;
 }
 
-.subtitle, .date {
-  opacity: 0.7;
+h1 {
+  font-size: 2rem;
+  margin: 0;
+  letter-spacing: 0.2px;
+}
+
+.subtitle {
+  opacity: 0.75;
+  margin-top: 6px;
+}
+
+.date {
+  margin-top: 6px;
+  font-size: 0.9rem;
+  opacity: 0.6;
 }
 
 .card {
   max-width: 520px;
   margin: 40px auto;
-  padding: 32px;
+  padding: 36px 28px;
+  background: rgba(255, 255, 255, 0.04);
   border-radius: 22px;
-  background: rgba(255,255,255,0.04);
+  box-shadow:
+    0 30px 80px rgba(0, 0, 0, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(10px);
 }
 
-.blurred {
-  filter: blur(6px);
-  opacity: 0.6;
-  margin: 20px 0;
+.card h2 {
+  font-size: 1.4rem;
+  margin-bottom: 14px;
 }
 
-.premium-box {
-  margin-top: 30px;
-  padding: 24px;
+.card p {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  opacity: 0.95;
+}
+
+/* ===========================
+   PREMIUM BEREICH
+=========================== */
+
+#premium {
+  margin-top: 28px;
+  padding: 24px 22px;
   border-radius: 18px;
-  background: linear-gradient(135deg, #1b2335, #121826);
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.08),
+    rgba(255, 255, 255, 0.03)
+  );
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  animation: fadeIn 0.8s ease forwards;
 }
 
-.premium-box span {
-  font-size: 11px;
-  letter-spacing: 2px;
-  opacity: 0.6;
+#premium p {
+  margin: 10px 0;
 }
 
+#verse {
+  font-style: italic;
+  opacity: 0.9;
+}
+
+#blessing {
+  margin-top: 14px;
+  font-weight: 500;
+}
+
+/* ===========================
+   UPSELL (FREE)
+=========================== */
+
+#upsell {
+  margin-top: 28px;
+  padding: 22px;
+  border-radius: 18px;
+  background: rgba(0, 0, 0, 0.35);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.06);
+}
+
+#upsell span {
+  display: block;
+  font-size: 0.7rem;
+  letter-spacing: 1.6px;
+  opacity: 0.5;
+  margin-bottom: 10px;
+}
+
+#upsell p {
+  font-size: 0.95rem;
+  opacity: 0.85;
+}
+
+/* CTA */
 .cta {
   display: inline-block;
   margin-top: 16px;
   padding: 12px 22px;
   border-radius: 999px;
-  background: linear-gradient(135deg, #6aa9ff, #7ee7c9);
-  color: #081018;
-  text-decoration: none;
+  background: linear-gradient(135deg, #6ea8fe, #7ef0c4);
+  color: #0b1220;
   font-weight: 600;
+  text-decoration: none;
+  box-shadow:
+    0 10px 30px rgba(110, 168, 254, 0.35);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.cta:hover {
+  transform: translateY(-1px);
+  box-shadow:
+    0 14px 40px rgba(110, 168, 254, 0.5);
+}
+
+/* ===========================
+   FOOTER
+=========================== */
+
+footer {
+  margin-top: 40px;
+  font-size: 0.8rem;
+  opacity: 0.45;
+}
+
+/* ===========================
+   ANIMATION
+=========================== */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
