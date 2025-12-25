@@ -4,43 +4,62 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Tägliches Wort</title>
+
+  <!-- Styles -->
   <link rel="stylesheet" href="./style.css" />
+
+  <!-- PWA -->
   <link rel="manifest" href="./manifest.json" />
+  <meta name="theme-color" content="#0e1624" />
 </head>
 
 <body>
-  <!-- Logo (optional) -->
-  <img src="./assets/Blatt.png" class="logo" alt="Blatt" />
+
+  <!-- Logo / Symbol -->
+  <img
+    src="./assets/Blatt.png"
+    class="logo"
+    alt=""
+    aria-hidden="true"
+  />
 
   <h1>Tägliches Wort</h1>
   <p class="subtitle">Ein stiller Impuls für heute</p>
   <p id="date" class="date"></p>
 
-  <div class="card">
+  <main class="card">
     <h2 id="title"></h2>
     <p id="text"></p>
 
-    <!-- Premium Content Bereich -->
-    <div id="premiumBlock">
+    <!-- Premium-Bereich -->
+    <section id="premiumBlock">
+
+      <!-- Vers + Segen (nur Premium sichtbar) -->
       <div class="blurred">
         <p id="verse" class="verse"></p>
         <p id="blessing" class="blessing"></p>
       </div>
 
+      <!-- Upsell -->
       <div class="premium-box">
-        <span>FÜR ABONNENTEN</span>
+        <span class="premium-label">FÜR ABONNENTEN</span>
         <p>Der heutige Gedanke entfaltet sich vollständig im Premium.</p>
-        <a class="cta" href="https://kiimkopf.gumroad.com/l/rabbb">
+        <a
+          class="cta"
+          href="https://kiimkopf.gumroad.com/l/rabbb"
+        >
           🌙 Zugang öffnen – 1 € im Monat
         </a>
       </div>
-    </div>
-  </div>
+
+    </section>
+  </main>
 
   <footer>
     Ein stiller Impuls. Kein Ersatz für Gespräche oder Seelsorge.
   </footer>
 
-  <script src="./script.js"></script>
+  <!-- Script ganz am Ende -->
+  <script src="./script.js" defer></script>
 </body>
 </html>
