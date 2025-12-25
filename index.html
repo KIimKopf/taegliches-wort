@@ -10,70 +10,42 @@
 
   <!-- PWA -->
   <link rel="manifest" href="./manifest.json" />
-  <meta name="theme-color" content="#0f1724" />
-  <link rel="apple-touch-icon" href="./assets/icon-192.png" />
 </head>
 
 <body>
 
-  <!-- Logo / Symbol -->
-  <img
-    src="./assets/Blatt.png"
-    class="logo"
-    alt=""
-    aria-hidden="true"
-  />
+  <!-- Logo -->
+  <img src="./assets/Blatt.png" class="logo" alt="Blatt" />
 
   <h1>Tägliches Wort</h1>
   <p class="subtitle">Ein stiller Impuls für heute</p>
   <p id="date" class="date"></p>
 
-  <main class="card">
+  <div class="card">
     <h2 id="title"></h2>
     <p id="text"></p>
 
-    <!-- Premium-Bereich -->
-    <section id="premiumBlock">
+    <!-- Vorschau (Free) -->
+    <div class="blurred">
+      <p class="verse">Ein Gedanke, der tiefer geht…</p>
+      <p class="blessing">Ein Segen, der bleibt…</p>
+    </div>
 
-      <!-- Vers + Segen (nur Premium sichtbar) -->
-      <div class="blurred">
-        <p id="verse" class="verse"></p>
-        <p id="blessing" class="blessing"></p>
-      </div>
-
-      <!-- Upsell -->
-      <div class="premium-box">
-        <span class="premium-label">FÜR ABONNENTEN</span>
-        <p>Der heutige Gedanke entfaltet sich vollständig im Premium.</p>
-        <a
-          class="cta"
-          href="https://kiimkopf.gumroad.com/l/rabbb"
-        >
-          🌙 Zugang öffnen – 1 € im Monat
-        </a>
-      </div>
-
-    </section>
-  </main>
+    <!-- Upsell -->
+    <div class="premium-box">
+      <span>FÜR ABONNENTEN</span>
+      <p>Der heutige Gedanke entfaltet sich vollständig im Premium.</p>
+      <a class="cta" href="https://kiimkopf.gumroad.com/l/rabbb">
+        🌙 Zugang öffnen – 1 € im Monat
+      </a>
+    </div>
+  </div>
 
   <footer>
     Ein stiller Impuls. Kein Ersatz für Gespräche oder Seelsorge.
   </footer>
 
   <!-- Script ganz am Ende -->
-  <script src="./script.js" defer></script>
-  
-  <script>
-  // iOS-Hinweis nur einmal
-  if (
-    /iphone|ipad|ipod/i.test(navigator.userAgent) &&
-    !window.matchMedia('(display-mode: standalone)').matches
-  ) {
-    console.log("iOS: Zum Homescreen hinzufügen empfohlen");
-  }
-</script>
-
+  <script src="./script.js"></script>
 </body>
 </html>
-
-
