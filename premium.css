@@ -1,0 +1,33 @@
+body {
+  margin: 0;
+  font-family: system-ui, serif;
+  background: radial-gradient(circle at center, #0e1422, #05070c);
+  color: #f1f4fa;
+  text-align: center;
+}
+
+.aura {
+  width: 18px;
+  margin: 50px auto 20px;
+  opacity: 0.8;
+}
+
+.card.premium {
+  max-width: 520px;
+  margin: 50px auto;
+  padding: 40px;
+  border-radius: 26px;
+  background: rgba(255,255,255,0.03);
+  box-shadow: 0 0 80px rgba(180,220,255,0.12);
+}
+
+.verse {
+  font-style: italic;
+  opacity: 0.85;
+  margin-top: 26px;
+}
+
+.blessing {
+  margin-top: 14px;
+  color: #9af0c8;
+}

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <title>Tägliches Wort</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="manifest" href="manifest.json">
+</head>
+<body>
+  <main class="app fade-in">
+    <header>
+      <div class="leaf">🌿</div>
+      <h1>Tägliches Wort</h1>
+      <p class="subtitle">Ein stiller Impuls für heute</p>
+      <p id="date" class="date"></p>
+    </header>
+
+    <section class="card">
+      <h2 id="title"></h2>
+      <p id="text"></p>
+
+      <div class="blur-block">
+        <p id="verse"></p>
+        <p id="blessing"></p>
+      </div>
+
+      <div class="premium-cta">
+        <p class="small">FÜR ABONNENTEN</p>
+        <p>Der heutige Gedanke entfaltet sich vollständig im Premium.</p>
+        <button id="upgradeBtn">🌙 Zugang öffnen – 1 € im Monat</button>
+      </div>
+    </section>
+
+    <footer>
+      Ein stiller Impuls. Kein Ersatz für Gespräche oder Seelsorge.
+    </footer>
+  </main>
+
+  <script src="free.js"></script>
+</body>
+</html>
