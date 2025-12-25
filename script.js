@@ -1,10 +1,10 @@
 // ================================
 // CONFIG
 // ================================
-const CREATOR_MODE = false; // 🔴 NUR lokal true, NIE live
+const CREATOR_MODE = false; // lokal true erlaubt
 
 // ================================
-// ELEMENTS (safe grabs)
+// ELEMENTS (SAFE)
 // ================================
 const dateEl = document.getElementById("date");
 const titleEl = document.getElementById("title");
@@ -16,8 +16,8 @@ const premiumBlock = document.getElementById("premiumBlock");
 // ================================
 // DATE
 // ================================
+const today = new Date();
 if (dateEl) {
-  const today = new Date();
   dateEl.textContent = today.toLocaleDateString("de-DE", {
     weekday: "long",
     year: "numeric",
@@ -32,7 +32,7 @@ if (dateEl) {
 let isPremium =
   CREATOR_MODE || localStorage.getItem("premium") === "true";
 
-// Gumroad Rückkehr (?premium=true)
+// Gumroad Rückkehr
 const params = new URLSearchParams(window.location.search);
 if (params.get("premium") === "true") {
   localStorage.setItem("premium", "true");
@@ -41,52 +41,31 @@ if (params.get("premium") === "true") {
 }
 
 // ================================
-// PREMIUM PAGE PROTECTION
-// ================================
-if (
-  document.body.classList.contains("premium-page") &&
-  !isPremium
-) {
-  window.location.href = "./index.html";
-}
-
-// ================================
 // CONTENT
 // ================================
 let entries = [];
 
 fetch("./content.json", { cache: "no-store" })
-  .then((res) => {
-    if (!res.ok) throw new Error("content.json not found");
-    return res.json();
-  })
+  .then((res) => res.json())
   .then((data) => {
-    if (!Array.isArray(data) || data.length === 0) {
-      throw new Error("content.json empty");
-    }
     entries = data;
     showToday();
-  })
-  .catch((err) => {
-    console.error("Content load failed:", err);
   });
 
-// ================================
-// RENDER
-// ================================
 function showToday() {
-  const today = new Date();
+  if (!entries.length) return;
+
   const index =
     Math.floor(today.getTime() / 86400000) % entries.length;
 
   const entry = entries[index];
 
-  if (titleEl) titleEl.textContent = entry.title || "";
-  if (textEl) textEl.textContent = entry.text || "";
+  if (titleEl) titleEl.textContent = entry.title;
+  if (textEl) textEl.textContent = entry.text;
 
   if (isPremium) {
-    if (verseEl) verseEl.textContent = entry.verse || "";
-    if (blessingEl) blessingEl.textContent = entry.blessing || "";
+    if (verseEl) verseEl.textContent = entry.verse;
+    if (blessingEl) blessingEl.textContent = entry.blessing;
     if (premiumBlock) premiumBlock.style.display = "none";
   } else {
     if (verseEl) verseEl.textContent = "";
@@ -106,5 +85,3 @@ window.addEventListener("keydown", (e) => {
     location.reload();
   }
 });
-
-
